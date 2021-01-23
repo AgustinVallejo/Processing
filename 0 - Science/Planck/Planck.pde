@@ -9,6 +9,8 @@ float dp = p2 - p1; //Ancho del espectro visible
 int Temp; //Temperatura inicial
 float L;
 
+int frame = 0;
+
 void setup() {
   Temp = 3000;
   L = 1000*2898/Temp;
@@ -37,6 +39,9 @@ void keyPressed() { //Para manejar manualmente la Temperatura
     Temp += 0;
   } else if (keyCode == UP) {
     setup();
+  } else if (keyCode == ENTER) {
+    saveFrame(frame+".png");
+    frame++;
   }
 }
 

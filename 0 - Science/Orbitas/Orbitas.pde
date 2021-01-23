@@ -1,6 +1,7 @@
 int N = 250;
 Mover[] m = new Mover[N];
 int b = 40;
+int frame = 0;
 
 void setup(){
   size(640,640);
@@ -22,6 +23,13 @@ void draw(){
   }
   fill(0);
   ellipse(width/2,height/2,b,b);
+  
+  if (frame<1000){
+    if (frame%5 == 0){
+      saveFrame("../../Gifs/Orbitas/"+frame);
+    }
+    frame++;
+  }
 }
 
 void mousePressed(){
