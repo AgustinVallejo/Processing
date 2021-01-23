@@ -3,7 +3,7 @@ color[] col = {#aaaaaa,#ffcc4f,#28a9ff,#ff0000,#af6c00,#ffdd89};
 int N = as.length;
 Mover[] m = new Mover[N];
 Star[] st = new Star[1000];
-int b = 0;
+int b = 0, frame = 0;
 
 void setup(){
   size(648,648);
@@ -102,4 +102,11 @@ class Mover{
   acc = dir1;
  }
 
+}
+
+void keyPressed(){
+  if (keyCode == ENTER) {
+    saveFrame(frame+".png");
+    frame++;
+  }
 }

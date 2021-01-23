@@ -1,4 +1,4 @@
-int a = 0, da = 2, t=0;
+int a = 0, da = 2, t=0, frame=0;
 boolean time = false, laser = false;
 
 void setup(){
@@ -29,6 +29,10 @@ void keyPressed() { //Para manejar manualmente la Temperatura
   }
   else if (keyCode == UP) {
     laser = !laser;
+  }
+  else if (keyCode == ENTER) {
+    saveFrame(frame+".png");
+    frame++;
   }
 }
 

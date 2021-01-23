@@ -1,6 +1,7 @@
 PVector move,pos1,pos2;
 float Rstar = 200,ini,scale;
 int t;
+int frame = 0;
 
 void setup(){
   size(500,500);
@@ -61,5 +62,9 @@ void keyPressed()
  if(key == ' ')
  {
    setup();
+ }
+ else if (keyCode == ENTER) {
+    saveFrame(frame+".png");
+    frame++;
  }
 }

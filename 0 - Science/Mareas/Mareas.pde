@@ -1,4 +1,4 @@
-float radioT = 200, radioL = 50,t=0; 
+float radioT = 200, radioL = 50,t=0, frame = 0; 
 Star[] st = new Star[1000]; //El conjunto de las estrellas de fondo
 PImage IMG;
 
@@ -198,4 +198,11 @@ void stickman(float t){
   fill(200,200,255,100);
   ellipse (0,-95+y,80,80);
   popMatrix();   
+}
+
+void keyPressed(){
+  if (keyCode == ENTER) {
+    saveFrame(frame+".png");
+    frame++;
+  }
 }
