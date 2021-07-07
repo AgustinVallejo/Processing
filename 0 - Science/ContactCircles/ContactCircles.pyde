@@ -39,4 +39,3 @@ def draw_points():
     for i,point in enumerate(points):
         fill(hues[i],150,255)
         circle(point.x,point.y,2*R)
-    
