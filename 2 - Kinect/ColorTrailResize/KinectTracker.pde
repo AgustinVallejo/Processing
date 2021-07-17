@@ -8,7 +8,7 @@
 class KinectTracker {
 
   // Depth threshold
-  int threshold = 900;
+  int threshold = 750;
 
   // Raw location
   PVector loc;
@@ -18,6 +18,7 @@ class KinectTracker {
 
   // Depth data
   int[] depth;
+  float avgDepth = 0;
   
   // What we'll show the user
   PImage display;
@@ -44,6 +45,7 @@ class KinectTracker {
     float sumX = 0;
     float sumY = 0;
     float count = 0;
+    avgDepth = 0;
 
     for (int x = 0; x < kinect.width; x++) {
       for (int y = 0; y < kinect.height; y++) {
@@ -78,7 +80,7 @@ class KinectTracker {
     return loc;
   }
 
-  void display() {
+  void display(int col) {
     PImage img = kinect.getDepthImage();
 
     // Being overly cautious here
@@ -96,7 +98,7 @@ class KinectTracker {
         int pix = x + y * display.width;
         if (rawDepth < threshold) {
           // A red color instead
-          display.pixels[pix] = color(255);
+          display.pixels[pix] = color(col,255,255);
         } else {
           display.pixels[pix] = color(0); //img.pixels[offset];
         }
@@ -105,8 +107,20 @@ class KinectTracker {
     display.updatePixels();
 
     // Draw the image
-    tint(255,100);
-    image(display, 0, 0,width,height);
+    //tint(255,100);
+    //image(display, 0, 0,width,height);
+  }
+  
+  void undisplay(){
+    display.loadPixels();
+    for (int x = 0; x < kinect.width; x++) {
+      for (int y = 0; y < kinect.height; y++) {
+        int pix = x + y * display.width;
+        display.pixels[pix] = color(0);
+      }
+    }
+    display.updatePixels();
+
   }
 
   int getThreshold() {

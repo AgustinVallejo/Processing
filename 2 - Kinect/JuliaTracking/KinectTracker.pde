@@ -18,6 +18,7 @@ class KinectTracker {
 
   // Depth data
   int[] depth;
+  float sumTot;
   
   // What we'll show the user
   PImage display;
@@ -26,7 +27,7 @@ class KinectTracker {
     // This is an awkard use of a global variable here
     // But doing it this way for simplicity
     kinect.initDepth();
-    kinect.enableMirror(true);
+    //kinect.enableMirror(true);
     // Make a blank image
     display = createImage(kinect.width, kinect.height, RGB);
     // Set up the vectors
@@ -43,6 +44,7 @@ class KinectTracker {
 
     float sumX = 0;
     float sumY = 0;
+    sumTot = 0;
     float count = 0;
 
     for (int x = 0; x < kinect.width; x++) {
@@ -56,6 +58,7 @@ class KinectTracker {
         if (rawDepth < threshold) {
           sumX += x;
           sumY += y;
+          sumTot++;
           count++;
         }
       }
@@ -96,7 +99,7 @@ class KinectTracker {
         int pix = x + y * display.width;
         if (rawDepth < threshold) {
           // A red color instead
-          display.pixels[pix] = color(255);
+          display.pixels[pix] = color(1);
         } else {
           display.pixels[pix] = color(0); //img.pixels[offset];
         }
@@ -105,7 +108,7 @@ class KinectTracker {
     display.updatePixels();
 
     // Draw the image
-    tint(255,100);
+    tint(1,0.3);
     image(display, 0, 0,width,height);
   }
 

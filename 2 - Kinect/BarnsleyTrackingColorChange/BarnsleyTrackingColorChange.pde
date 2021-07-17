@@ -33,6 +33,7 @@ PVector transform(float x, float y){
 
 void setup() {
   size(1500, 900);
+  colorMode(HSB);
   kinect = new Kinect(this);
   tracker = new KinectTracker();
 }
@@ -57,6 +58,13 @@ void draw() {
   }
   else{B=0;}
   
+  // Get and transform the color
+  float meanDepth = tracker.meanDepth;
+  float threshold = tracker.threshold;
+  float hue_ = map(meanDepth,440,threshold,0,255);
+  int count = tracker.count;
+  float sat_ = map(count,0,kinect.width*kinect.height,255,0);
+  col = color(hue_,sat_,255);
 
   x0 = 0;
   y0 = 0;
@@ -69,6 +77,7 @@ void draw() {
     x0 = v2.x;
     y0 = v2.y;
       }
+      
   // Display some info
   int t = tracker.getThreshold();
   fill(255);

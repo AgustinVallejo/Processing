@@ -9,6 +9,7 @@ class KinectTracker {
 
   // Depth threshold
   int threshold = 900;
+  int count;
 
   // Raw location
   PVector loc;
@@ -18,6 +19,7 @@ class KinectTracker {
 
   // Depth data
   int[] depth;
+  float meanDepth = 0;
   
   // What we'll show the user
   PImage display;
@@ -43,7 +45,7 @@ class KinectTracker {
 
     float sumX = 0;
     float sumY = 0;
-    float count = 0;
+    count = 0;
 
     for (int x = 0; x < kinect.width; x++) {
       for (int y = 0; y < kinect.height; y++) {
@@ -57,12 +59,14 @@ class KinectTracker {
           sumX += x;
           sumY += y;
           count++;
+          meanDepth += rawDepth;
         }
       }
     }
     // As long as we found something
     if (count != 0) {
       loc = new PVector(sumX/count, sumY/count);
+      meanDepth /= count;
     }
 
     // Interpolating the location, doing it arbitrarily for now
