@@ -8,7 +8,7 @@
 class KinectTracker {
 
   // Depth threshold
-  int threshold = 600;
+  int threshold = 800;
   int count;
 
   // Raw location

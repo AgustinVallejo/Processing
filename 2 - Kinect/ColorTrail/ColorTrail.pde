@@ -8,7 +8,8 @@ Kinect kinect;
 int col = 0;
 
 void setup() {
-  size(1500, 900);
+  //size(1500, 900);
+  fullScreen();
   colorMode(HSB);
   kinect = new Kinect(this);
   tracker = new KinectTracker();
@@ -21,7 +22,7 @@ void draw() {
   tracker.track();
   // Show the image
   tracker.display(col);
-  col += 1;
+  col += 3;
   if (col > 255){col = 0;}
   
   
