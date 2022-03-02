@@ -48,14 +48,12 @@ void draw() {
 
   // Let's draw the raw location
   PVector v1 = tracker.getPos();
-  if (!Float.isNaN(v1.x)){
-    A = constrain(A,0,kinect.width);
+  if ((v1.x > 0)&&(v1.x<kinect.width)&&(!Float.isNaN(v1.x))){
     A = map(v1.x,0,kinect.width,-1,1);
   }
   else{A=0;}
   
-  if (!Float.isNaN(v1.y)){
-    B = constrain(B,0,kinect.height);
+  if ((v1.y > 0)&&(v1.y<kinect.height)&&(!Float.isNaN(v1.y))){
     B = map(v1.y,0,kinect.height,-1,1);
   }
   else{B=0;}

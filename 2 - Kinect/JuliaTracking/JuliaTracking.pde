@@ -133,7 +133,7 @@ void draw() {
     y += dy;
   }
   updatePixels();
-  dcol += 0.05;
+  dcol += 0.01;
   if (dcol > 1){dcol = 0;}
   
   // Show the image

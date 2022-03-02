@@ -5,8 +5,7 @@ float angle;
 float m = 0;
 
 void setup(){
-  //size(1112,834);
-  fullScreen();
+  size(1112,834);
   colorMode(HSB, 255);
   noStroke();
   m = random(255);
@@ -14,7 +13,7 @@ void setup(){
 }
 
 void draw(){
-  background(0);
+  background(255);
   float x=width;
   float d=150;
   int num=100;
